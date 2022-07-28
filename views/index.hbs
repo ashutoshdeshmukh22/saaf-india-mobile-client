@@ -8,7 +8,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="theme-color" content="#000000">
-    <title>Finapp</title>
+    <title>Saaf India</title>
     <meta name="description" content="Finapp HTML Mobile Template">
     <meta name="keywords"
         content="bootstrap, wallet, banking, fintech mobile template, cordova, phonegap, mobile, html, responsive" />
@@ -37,11 +37,11 @@
             <img src="public/img/logo.png" alt="logo" class="logo">
         </div>
         <div class="right">
-            <a href="app-notifications.html" class="headerButton">
+            <a href="/notifications" class="headerButton">
                 <ion-icon class="icon" name="notifications-outline"></ion-icon>
                 <span class="badge badge-danger">4</span>
             </a>
-            <a href="app-settings.html" class="headerButton">
+            <a href="/settings" class="headerButton">
                 <img src="public/img/sample/avatar/avatar1.jpg" alt="image" class="imaged w32">
                 <span class="badge badge-danger">6</span>
             </a>
@@ -76,7 +76,7 @@
                             <div class="icon-wrapper bg-danger">
                                 <ion-icon name="arrow-down-outline"></ion-icon>
                             </div>
-                            <strong>Withdraw</strong>
+                            <strong>Withdraw Req</strong>
                         </a>
                     </div>
                     <div class="item">
@@ -84,7 +84,7 @@
                             <div class="icon-wrapper">
                                 <ion-icon name="arrow-forward-outline"></ion-icon>
                             </div>
-                            <strong>Send</strong>
+                            <strong>Send Req.</strong>
                         </a>
                     </div>
                     <div class="item">
@@ -92,7 +92,7 @@
                             <div class="icon-wrapper bg-warning">
                                 <ion-icon name="swap-vertical"></ion-icon>
                             </div>
-                            <strong>Exchange</strong>
+                            <strong>Exchange Points</strong>
                         </a>
                     </div>
 
@@ -202,12 +202,12 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title">Send Money</h5>
+                        <h5 class="modal-title">Send Pickup Request</h5>
                     </div>
                     <div class="modal-body">
                         <div class="action-sheet-content">
-                            <form>
-                                <div class="form-group basic">
+                            <form action="" method="">
+                                {{!-- <div class="form-group basic">
                                     <div class="input-wrapper">
                                         <label class="label" for="account2">From</label>
                                         <select class="form-control custom-select" id="account2">
@@ -216,13 +216,13 @@
                                             <option value="2">Mortgage (*** 5021)</option>
                                         </select>
                                     </div>
-                                </div>
+                                </div> --}}
 
                                 <div class="form-group basic">
                                     <div class="input-wrapper">
-                                        <label class="label" for="text11">To</label>
-                                        <input type="email" class="form-control" id="text11"
-                                            placeholder="Enter bank ID">
+                                        <label class="label" for="text11">Product Name</label>
+                                        <input type="text" class="form-control" id="text11"
+                                            placeholder="Enter Product Name">
                                         <i class="clear-input">
                                             <ion-icon name="close-circle"></ion-icon>
                                         </i>
@@ -230,11 +230,9 @@
                                 </div>
 
                                 <div class="form-group basic">
-                                    <label class="label">Enter Amount</label>
-                                    <div class="input-group mb-2">
-                                        <span class="input-group-text" id="basic-addon1">$</span>
-                                        <input type="text" class="form-control" placeholder="Enter an amount"
-                                            value="100">
+                                    <label class="label">Scan The QR Code To Get Details</label>
+                                    <div class="input-group mb-2 mt-2">
+                                        <button type="button" class="btn btn-primary" value="">Scan</button>
                                     </div>
                                 </div>
 
@@ -355,56 +353,28 @@
                 <!-- item -->
                 <a href="app-transaction-detail.html" class="item">
                     <div class="detail">
-                        <img src="public/img/sample/brand/1.jpg" alt="img" class="image-block imaged w48">
+                        <img src="https://5.imimg.com/data5/XJ/JJ/MY-20797814/cardboard-carton-box-500x500.jpg" alt="img" class="image-block imaged w48">
                         <div>
-                            <strong>Amazon</strong>
-                            <p>Shopping</p>
+                            <strong>Mobile Box</strong>
+                            <p>200 gm</p>
                         </div>
                     </div>
                     <div class="right">
-                        <div class="price text-danger"> - $ 150</div>
+                        <span>Qty</span><div class="price text-success">+1</div>
                     </div>
                 </a>
                 <!-- * item -->
                 <!-- item -->
                 <a href="app-transaction-detail.html" class="item">
                     <div class="detail">
-                        <img src="public/img/sample/brand/2.jpg" alt="img" class="image-block imaged w48">
+                        <img src="https://m.media-amazon.com/images/I/51YjwpyllhL._AC_SS450_.jpg" alt="img" class="image-block imaged w48">
                         <div>
-                            <strong>Apple</strong>
-                            <p>Appstore Purchase</p>
+                            <strong>AC Cardboard Box</strong>
+                            <p>900 gm</p>
                         </div>
                     </div>
                     <div class="right">
-                        <div class="price text-danger">- $ 29</div>
-                    </div>
-                </a>
-                <!-- * item -->
-                <!-- item -->
-                <a href="app-transaction-detail.html" class="item">
-                    <div class="detail">
-                        <img src="public/img/sample/avatar/avatar3.jpg" alt="img" class="image-block imaged w48">
-                        <div>
-                            <strong>Alex Ljung</strong>
-                            <p>Transfer</p>
-                        </div>
-                    </div>
-                    <div class="right">
-                        <div class="price">+ $ 1,000</div>
-                    </div>
-                </a>
-                <!-- * item -->
-                <!-- item -->
-                <a href="app-transaction-detail.html" class="item">
-                    <div class="detail">
-                        <img src="public/img/sample/avatar/avatar4.jpg" alt="img" class="image-block imaged w48">
-                        <div>
-                            <strong>Beatriz Brito</strong>
-                            <p>Transfer</p>
-                        </div>
-                    </div>
-                    <div class="right">
-                        <div class="price text-danger">- $ 186</div>
+                         <span>Qty</span><div class="price text-success">+1</div>
                     </div>
                 </a>
                 <!-- * item -->
@@ -429,9 +399,9 @@
                         <li class="splide__slide">
                             <a href="app-blog-post.html">
                                 <div class="blog-card">
-                                    <img src="public/img/sample/photo/1.jpg" alt="image" class="imaged w-100">
+                                    <img src="http://cdn.shopify.com/s/files/1/1012/2362/files/Reduce_Reuse_Recycle_large.jpg?v=1502839302" alt="image" class="imaged w-100">
                                     <div class="text">
-                                        <h4 class="title">What will be the value of bitcoin in the next...</h4>
+                                        <h4 class="title">What is the difference between reuse and recycling?</h4>
                                     </div>
                                 </div>
                             </a>
@@ -440,9 +410,9 @@
                         <li class="splide__slide">
                             <a href="app-blog-post.html">
                                 <div class="blog-card">
-                                    <img src="public/img/sample/photo/2.jpg" alt="image" class="imaged w-100">
+                                    <img src="https://cuyahogarecycles.org/img/PageContent/Publications/CCSWD_Spinner_Back_large.jpg" alt="image" class="imaged w-100">
                                     <div class="text">
-                                        <h4 class="title">Rules you need to know in business</h4>
+                                        <h4 class="title">Recycling can still produce waste and pollution</h4>
                                     </div>
                                 </div>
                             </a>
@@ -451,25 +421,13 @@
                         <li class="splide__slide">
                             <a href="app-blog-post.html">
                                 <div class="blog-card">
-                                    <img src="public/img/sample/photo/3.jpg" alt="image" class="imaged w-100">
+                                    <img src="https://pubs.nmsu.edu/_g/G314/images/G314fig1.jpg" alt="image" class="imaged w-100">
                                     <div class="text">
-                                        <h4 class="title">10 easy ways to save your money</h4>
+                                        <h4 class="title">Any item in good condition can be reused</h4>
                                     </div>
                                 </div>
                             </a>
                         </li>
-
-                        <li class="splide__slide">
-                            <a href="app-blog-post.html">
-                                <div class="blog-card">
-                                    <img src="public/img/sample/photo/4.jpg" alt="image" class="imaged w-100">
-                                    <div class="text">
-                                        <h4 class="title">Follow the financial agenda with...</h4>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-
                     </ul>
                 </div>
             </div>
@@ -479,14 +437,7 @@
         <!-- * News -->
 
 
-        <!-- app footer -->
-        <div class="appFooter">
-            <div class="footer-title">
-                Copyright © Saaf India 2022. All Rights Reserved.
-            </div>
-            By Ashutosh Deshmukh
-        </div>
-        <!-- * app footer -->
+
 
     </div>
     <!-- * App Capsule -->
@@ -494,13 +445,13 @@
 
     <!-- App Bottom Menu -->
     <div class="appBottomMenu">
-        <a href="index.html" class="item active">
+        <a href="/home" class="item active">
             <div class="col">
                 <ion-icon name="pie-chart-outline"></ion-icon>
                 <strong>Overview</strong>
             </div>
         </a>
-        <a href="app-settings.html" class="item">
+        <a href="/settings" class="item">
             <div class="col">
                 <ion-icon name="settings-outline"></ion-icon>
                 <strong>Settings</strong>
@@ -520,7 +471,7 @@
                             <img src="public/img/sample/avatar/avatar1.jpg" alt="image" class="imaged  w36">
                         </div>
                         <div class="in">
-                            <strong>Sebastian Doe</strong>
+                            <strong>Ashutosh Deshmukh</strong>
                             <div class="text-muted">4029209</div>
                         </div>
                         <a href="#" class="btn btn-link btn-icon sidebar-close" data-bs-dismiss="modal">
@@ -542,7 +493,7 @@
                     <div class="listview-title mt-1">Menu</div>
                     <ul class="listview flush transparent no-line image-listview">
                         <li>
-                            <a href="index.html" class="item">
+                            <a href="/home" class="item">
                                 <div class="icon-box bg-primary">
                                     <ion-icon name="pie-chart-outline"></ion-icon>
                                 </div>
@@ -552,7 +503,7 @@
                                 </div>
                             </a>
                         </li>
-                        <li>
+                        {{!-- <li>
                             <a href="app-cards.html" class="item">
                                 <div class="icon-box bg-primary">
                                     <ion-icon name="card-outline"></ion-icon>
@@ -561,7 +512,7 @@
                                     My Cards
                                 </div>
                             </a>
-                        </li>
+                        </li> --}}
                     </ul>
                     <!-- * menu -->
 
@@ -569,7 +520,7 @@
                     <div class="listview-title mt-1">Others</div>
                     <ul class="listview flush transparent no-line image-listview">
                         <li>
-                            <a href="app-settings.html" class="item">
+                            <a href="/settings" class="item">
                                 <div class="icon-box bg-primary">
                                     <ion-icon name="settings-outline"></ion-icon>
                                 </div>
@@ -579,7 +530,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="component-messages.html" class="item">
+                            <a href="#" class="item">
                                 <div class="icon-box bg-primary">
                                     <ion-icon name="chatbubble-outline"></ion-icon>
                                 </div>
@@ -602,6 +553,14 @@
 
                     </ul>
                     <!-- * others -->
+                            <!-- app footer -->
+                    <div class="appFooter">
+                        <div class="footer-title">
+                            Copyright © Saaf India 2022. All Rights Reserved.
+                        </div>
+                        By Ashutosh Deshmukh
+                    </div>
+                    <!-- * app footer -->
                 </div>
             </div>
         </div>

@@ -21,4 +21,19 @@ router.get('/home', (req, res) => {
   res.render('index');
 });
 
+// show settings page
+router.get('/settings', (req, res) => {
+  res.render('app-settings');
+});
+
+// show notifications page
+router.get('/notifications', (req, res) => {
+  res.render('app-notifications');
+});
+
+// show notifications detail page
+router.get('/notifications-detail', (req, res) => {
+  res.render('app-notification-detail');
+});
+
 module.exports = router;
