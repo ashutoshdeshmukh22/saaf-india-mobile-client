@@ -16,6 +16,7 @@
     <link rel="apple-touch-icon" sizes="180x180" href="public/img/icon/192x192.png">
     <link rel="stylesheet" href="public/css/style.css">
     <link rel="manifest" href="__manifest.json">
+    
 </head>
 
 <body>
@@ -80,7 +81,7 @@
                         </a>
                     </div>
                     <div class="item">
-                        <a href="#" data-bs-toggle="modal" data-bs-target="#sendActionSheet">
+                        <a href="/request">
                             <div class="icon-wrapper">
                                 <ion-icon name="arrow-forward-outline"></ion-icon>
                             </div>
@@ -232,7 +233,7 @@
                                 <div class="form-group basic">
                                     <label class="label">Scan The QR Code To Get Details</label>
                                     <div class="input-group mb-2 mt-2">
-                                        <button type="button" class="btn btn-primary" value="">Scan</button>
+                                        <a href="/scan" class="btn btn-primary">Scan</a>
                                     </div>
                                 </div>
 
@@ -253,56 +254,11 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title">Exchange Money</h5>
+                        <h5 class="modal-title">Exchange Points</h5>
                     </div>
                     <div class="modal-body">
                         <div class="action-sheet-content">
-                            <form>
-                                <div class="row">
-                                    <div class="col-6">
-                                        <div class="form-group basic">
-                                            <div class="input-wrapper">
-                                                <label class="label" for="currency1">From</label>
-                                                <select class="form-control custom-select" id="currency1">
-                                                    <option value="1">EUR</option>
-                                                    <option value="2">USD</option>
-                                                    <option value="3">AUD</option>
-                                                    <option value="4">CAD</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-6">
-                                        <div class="form-group basic">
-                                            <div class="input-wrapper">
-                                                <label class="label" for="currency2">To</label>
-                                                <select class="form-control custom-select" id="currency2">
-                                                    <option value="1">USD</option>
-                                                    <option value="1">EUR</option>
-                                                    <option value="2">AUD</option>
-                                                    <option value="3">CAD</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="form-group basic">
-                                    <label class="label">Enter Amount</label>
-                                    <div class="input-group mb-2">
-                                        <span class="input-group-text" id="basic-addon2">$</span>
-                                        <input type="text" class="form-control" placeholder="Enter an amount"
-                                            value="100">
-                                    </div>
-                                </div>
-
-
-
-                                <div class="form-group basic">
-                                    <button type="button" class="btn btn-primary btn-block btn-lg"
-                                        data-bs-dismiss="modal">Exchange</button>
-                                </div>
-                            </form>
+                            
                         </div>
                     </div>
                 </div>
@@ -347,7 +303,7 @@
         <div class="section mt-4">
             <div class="section-heading">
                 <h2 class="title">Recent Requests</h2>
-                <a href="app-transactions.html" class="link">View All</a>
+                <a href="#" class="link">View All</a>
             </div>
             <div class="transactions">
                 <!-- item -->

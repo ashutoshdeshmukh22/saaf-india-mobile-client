@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const bp = require('body-parser');
-
+const path = require('path');
 // Show login form on homepage
 router.get('/', (req, res) => {
   res.render('app-login');
@@ -34,6 +34,10 @@ router.get('/notifications', (req, res) => {
 // show notifications detail page
 router.get('/notifications-detail', (req, res) => {
   res.render('app-notification-detail');
+});
+
+router.get('/request', (req, res) => {
+  res.render('scanqr');
 });
 
 module.exports = router;
