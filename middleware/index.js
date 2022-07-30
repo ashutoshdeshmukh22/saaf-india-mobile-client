@@ -5,7 +5,7 @@ middlewareObj.isLoggedIn = function (req, res, next) {
   if (req.isAuthenticated()) {
     return next();
   }
-  res.redirect('/app-login');
+  res.render('app-login');
 };
 
 module.exports = middlewareObj;

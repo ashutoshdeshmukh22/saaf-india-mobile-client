@@ -138,12 +138,18 @@
                         <div class="text-center">
                             <h2 class="text-primary">Send The Request</h2>
                             <p>Send Pickup Request For Following Product</p>
+                            {{#if message}}
+                            <p class="alert alert-danger">
+                                {{message}}
+                            </p>
+                            <a href="/home" class="btn btn-secondary mt-2">Go To Home</a>
+                            {{/if}}
                         </div>
                         <form action="/sendrequest" method="post">
                             <div class="form-group basic animated">
                                 <div class="input-wrapper">
                                     <label class="label" for="pname">product name</label>
-                                    <input type="text" class="form-control" id="pname" placeholder="Product name" name="pname">
+                                    <input type="text" class="form-control" id="pname" placeholder="Product name" name="pname" required>
                                     <i class="clear-input">
                                         <ion-icon name="close-circle"></ion-icon>
                                     </i>
@@ -153,7 +159,7 @@
                             <div class="form-group basic animated">
                                 <div class="input-wrapper">
                                     <label class="label" for="size">Size</label>
-                                    <input type="text" class="form-control" id="size" placeholder="Size" name="size">
+                                    <input type="text" class="form-control" id="size" placeholder="Size" name="size" required>
                                     <i class="clear-input">
                                         <ion-icon name="close-circle"></ion-icon>
                                     </i>
@@ -163,7 +169,7 @@
                             <div class="form-group basic animated">
                                 <div class="input-wrapper">
                                     <label class="label" for="height">Height</label>
-                                    <input type="text" class="form-control" id="height" placeholder="Height" name="height">
+                                    <input type="text" class="form-control" id="height" placeholder="Height" name="height" required>
                                     <i class="clear-input">
                                         <ion-icon name="close-circle"></ion-icon>
                                     </i>
@@ -173,7 +179,7 @@
                             <div class="form-group basic animated">
                                 <div class="input-wrapper">
                                     <label class="label" for="width">width</label>
-                                    <input type="text" class="form-control" id="width" placeholder="Width" name="width">
+                                    <input type="text" class="form-control" id="width" placeholder="Width" name="width" required>
                                     <i class="clear-input">
                                         <ion-icon name="close-circle"></ion-icon>
                                     </i>
@@ -183,7 +189,7 @@
                             <div class="form-group basic animated">
                                 <div class="input-wrapper">
                                     <label class="label" for="textarea2">Weight</label>
-                                    <input type="text" class="form-control" id="weight" placeholder="Weight" name="weight">
+                                    <input type="text" class="form-control" id="weight" placeholder="Weight" name="weight" required>
                                     <i class="clear-input">
                                         <ion-icon name="close-circle"></ion-icon>
                                     </i>

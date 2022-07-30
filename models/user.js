@@ -11,6 +11,7 @@ var AppUser = new mongoose.Schema({
     required: true,
     unique: true,
   },
+  address: String,
   password: String,
 });
 

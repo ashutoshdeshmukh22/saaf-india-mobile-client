@@ -27,6 +27,7 @@ app.use((req, res, next) => {
   res.locals.currentUser = req.user;
   next();
 });
+
 //---------DATABASE SETUP------------------
 const mongo_uri = 'mongodb://127.0.0.1:27017/supplychaintracking';
 
@@ -48,6 +49,34 @@ connect.then(
 //-------------GENRAL CONFIGURATION----------
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set('view engine', 'hbs');
+var hbs = require('hbs');
+hbs.registerHelper('when', function (operand_1, operator, operand_2, options) {
+  var operators = {
+      eq: function (l, r) {
+        return l == r;
+      },
+      noteq: function (l, r) {
+        return l != r;
+      },
+      gt: function (l, r) {
+        return Number(l) > Number(r);
+      },
+      or: function (l, r) {
+        return l || r;
+      },
+      and: function (l, r) {
+        return l && r;
+      },
+      '%': function (l, r) {
+        return l % r === 0;
+      },
+    },
+    result = operators[operator](operand_1, operand_2);
+
+  if (result) return options.fn(this);
+  else return options.inverse(this);
+});
+
 app.use('/public', express.static('public'));
 // app.use(express.static(__dirname + '/public'));
 app.use(methodOverride('_method'));
