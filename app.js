@@ -7,6 +7,7 @@ const path = require('path');
 const User = require('./models/user');
 const passport = require('passport');
 const LocalStrategy = require('passport-local');
+const multer = require('multer');
 
 //------------PASSPORT CONFIGURATION-----------
 app.use(
@@ -49,33 +50,6 @@ connect.then(
 //-------------GENRAL CONFIGURATION----------
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set('view engine', 'hbs');
-var hbs = require('hbs');
-hbs.registerHelper('when', function (operand_1, operator, operand_2, options) {
-  var operators = {
-      eq: function (l, r) {
-        return l == r;
-      },
-      noteq: function (l, r) {
-        return l != r;
-      },
-      gt: function (l, r) {
-        return Number(l) > Number(r);
-      },
-      or: function (l, r) {
-        return l || r;
-      },
-      and: function (l, r) {
-        return l && r;
-      },
-      '%': function (l, r) {
-        return l % r === 0;
-      },
-    },
-    result = operators[operator](operand_1, operand_2);
-
-  if (result) return options.fn(this);
-  else return options.inverse(this);
-});
 
 app.use('/public', express.static('public'));
 // app.use(express.static(__dirname + '/public'));
@@ -91,4 +65,4 @@ app.use('/', indexRoutes);
 
 const port = 3000;
 app.get('/', (req, res) => res.send('Hello World!'));
-app.listen(port, () => console.log(`app listening on port ${port}!`));
+app.listen(port, () => console.log(`App Server Started On PORT ${port}!`));

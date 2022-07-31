@@ -11,8 +11,15 @@ var AppUser = new mongoose.Schema({
     required: true,
     unique: true,
   },
-  address: String,
-  password: String,
+  mobile: String,
+  address: {
+    type: String,
+    required: true,
+  },
+  password: {
+    type: String,
+  },
+  profileimg: String,
 });
 
 AppUser.plugin(passwordLocalMongoose);

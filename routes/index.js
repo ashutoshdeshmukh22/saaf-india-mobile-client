@@ -6,6 +6,27 @@ const AppUser = require('../models/user');
 const Request = require('../models/request');
 const passport = require('passport');
 const middleware = require('../middleware');
+const file = require('fs');
+const multer = require('multer');
+
+// router.use(express.static(__dirname + '/public/'));
+router.use('/public', express.static('public'));
+
+if (typeof localStorage === 'undefined' || localStorage === null) {
+  const LocalStorage = require('node-localstorage').LocalStorage;
+  localStorage = new LocalStorage('./scratch');
+}
+
+var Storage = multer.diskStorage({
+  destination: 'public/uploads',
+  filename: function (req, file, cb) {
+    cb(
+      null,
+      file.fieldname + '_' + Date.now() + path.extname(file.originalname)
+    );
+  },
+});
+var upload = multer({ storage: Storage }).single('profile');
 
 // Show login form on homepage
 router.get('/', (req, res) => {
@@ -42,7 +63,18 @@ router.get('/home', middleware.isLoggedIn, (req, res) => {
       // console.log(typeof req.user.username);
     }
   });
-  // .Request.countDocuments({ author: req.user.username }, (err, count) => {
+  // AppUser.find({ username: req.user.username }, (err, data) => {
+  //   if (err) {
+  //     console.log('Error in find');
+  //     console.log(err);
+  //   } else {
+  //     res.render('index', {
+  //       profileimg: data[0].profileimg,
+  //     });
+  //     // console.log(data[0]);
+  //   }
+  // });
+  // Request.countDocuments({ author: req.user.username }, (err, count) => {
   //   console.log(count);
   //   if (err) {
   //     console.log('Error in find');
@@ -90,6 +122,7 @@ router.post('/sendrequest', middleware.isLoggedIn, (req, res) => {
   var weight = req.body.weight;
   var author = req.user.username;
   var address = req.user.address;
+  var mobile = req.user.mobile;
 
   // var author = {
   //   id: req.user._id,
@@ -100,6 +133,7 @@ router.post('/sendrequest', middleware.isLoggedIn, (req, res) => {
   var newRequest = {
     address: address,
     author: author,
+    mobile: mobile,
     pname: pname,
     size: size,
     height: height,
@@ -135,22 +169,39 @@ router.post(
     successRedirect: '/home',
     failureRedirect: '/',
   }),
-  (req, res) => {}
+  (req, res) => {
+    AppUser.find({ username: req.user.username }, (err, data) => {
+      if (err) {
+        console.log('Error in find');
+        console.log(err);
+      } else {
+        res.render('index', {
+          profileimg: data.username,
+        });
+        console.log(data);
+      }
+    });
+  }
 );
 
 // habdle signup logic
 
-router.post('/register', (req, res) => {
+router.post('/register', upload, (req, res) => {
   console.log(req.body);
   const pass = req.body.password;
   const confirmPass = req.body.confirmpassword;
   const email = req.body.email;
+
   var newUser = new AppUser({
     username: req.body.username,
     email: email,
+    mobile: req.body.mobile,
     address: req.body.address,
+    profileimg: req.file.filename,
   });
-  AppUser.register(newUser, req.body.password, (err, user) => {
+  console.log('filename ' + req.file.filename);
+
+  AppUser.register(newUser, pass, (err, user) => {
     if (err) {
       console.log(err);
       return res.render('app-register', {
@@ -158,7 +209,10 @@ router.post('/register', (req, res) => {
       });
     }
     passport.authenticate('local')(req, res, () => {
-      res.render('index', { currentUser: req.user });
+      res.render('index', {
+        currentUser: req.user,
+        profileimg: req.file.filename,
+      });
     });
   });
 });
