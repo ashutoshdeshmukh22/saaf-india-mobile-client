@@ -49,18 +49,11 @@ router.get('/home', middleware.isLoggedIn, (req, res) => {
       console.log('Error in find');
       console.log(err);
     } else {
-      // counts = Request.find({ author: req.user.username }).count();
       res.render('index', {
         requests: allrequests.reverse(),
         currentUser: req.user,
-        // totalcount: counts,
+        totalcount: allrequests.length,
       });
-
-      // console.log('Total Docs : ' + counts);
-      // console.log('author type' + allrequests.author);
-      // console.log('Hey');
-      // console.log('UserName ' + req.user.username);
-      // console.log(typeof req.user.username);
     }
   });
   // AppUser.find({ username: req.user.username }, (err, data) => {
@@ -72,18 +65,6 @@ router.get('/home', middleware.isLoggedIn, (req, res) => {
   //       profileimg: data[0].profileimg,
   //     });
   //     // console.log(data[0]);
-  //   }
-  // });
-  // Request.countDocuments({ author: req.user.username }, (err, count) => {
-  //   console.log(count);
-  //   if (err) {
-  //     console.log('Error in find');
-  //     console.log(err);
-  //   } else {
-  //     res.render('index', {
-  //       totalcount: count,
-  //       currentUser: req.user,
-  //     });
   //   }
   // });
 });
@@ -183,7 +164,6 @@ router.post(
     });
   }
 );
-
 // habdle signup logic
 
 router.post('/register', upload, (req, res) => {
