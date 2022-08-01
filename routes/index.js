@@ -49,24 +49,30 @@ router.get('/home', middleware.isLoggedIn, (req, res) => {
       console.log('Error in find');
       console.log(err);
     } else {
-      res.render('index', {
-        requests: allrequests.reverse(),
-        currentUser: req.user,
-        totalcount: allrequests.length,
+      AppUser.find({ username: req.user.username }, (err, data) => {
+        if (err) {
+          console.log('Error in find');
+          console.log(err);
+        } else {
+          res.render('index', {
+            profileimg: data[0].profileimg,
+            requests: allrequests.reverse(),
+            currentUser: req.user,
+            totalcount: allrequests.length,
+          });
+          // res.render('index', {
+          //   profileimg: data[0].profileimg,
+          // });
+          // console.log(data[0]);
+        }
       });
+      // res.render('index', {
+      //   requests: allrequests.reverse(),
+      //   currentUser: req.user,
+      //   totalcount: allrequests.length,
+      // });
     }
   });
-  // AppUser.find({ username: req.user.username }, (err, data) => {
-  //   if (err) {
-  //     console.log('Error in find');
-  //     console.log(err);
-  //   } else {
-  //     res.render('index', {
-  //       profileimg: data[0].profileimg,
-  //     });
-  //     // console.log(data[0]);
-  //   }
-  // });
 });
 
 // show settings page
