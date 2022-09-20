@@ -30,7 +30,8 @@ app.use((req, res, next) => {
 });
 
 //---------DATABASE SETUP------------------
-const mongo_uri = 'mongodb://127.0.0.1:27017/supplychaintracking';
+// const mongo_uri = 'mongodb://127.0.0.1:27017/supplychaintracking';
+const mongo_uri = 'mongodb+srv://cyberdome:cyberdome@cluster0.jntq8.mongodb.net/supplychaintracking?retryWrites=true&w=majority';
 
 const connect = mongoose.connect(mongo_uri, {
   useUnifiedTopology: true,
@@ -65,4 +66,4 @@ app.use('/', indexRoutes);
 
 const port = 3000;
 app.get('/', (req, res) => res.send('Hello World!'));
-app.listen(port, () => console.log(`App Server Started On PORT ${port}!`));
+app.listen(port, () => console.log(`User App Server Started On PORT ${port}!`));

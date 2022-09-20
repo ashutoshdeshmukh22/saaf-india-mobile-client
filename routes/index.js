@@ -8,6 +8,10 @@ const passport = require('passport');
 const middleware = require('../middleware');
 const file = require('fs');
 const multer = require('multer');
+const sgMail = require('@sendgrid/mail');
+sgMail.setApiKey(
+  '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'
+);
 
 // router.use(express.static(__dirname + '/public/'));
 router.use('/public', express.static('public'));
@@ -40,6 +44,15 @@ router.get('/login', (req, res) => {
 //show register form
 router.get('/register', (req, res) => {
   res.render('app-register');
+});
+
+// show forgotpassword page
+router.get('/forgotpassword', (req, res) => {
+  res.render('app-forgot-password');
+});
+// show contact page
+router.get('/support', (req, res) => {
+  res.render('app-contact');
 });
 
 // show homepage
@@ -77,7 +90,21 @@ router.get('/home', middleware.isLoggedIn, (req, res) => {
 
 // show settings page
 router.get('/settings', middleware.isLoggedIn, (req, res) => {
-  res.render('app-settings');
+  AppUser.find({ username: req.user.username }, (err, data) => {
+    if (err) {
+      console.log('Error in find');
+      console.log(err);
+    } else {
+      res.render('app-settings', {
+        profileimg: data[0].profileimg,
+        currentUser: req.user,
+      });
+      // res.render('index', {
+      //   profileimg: data[0].profileimg,
+      // });
+      // console.log(data[0]);
+    }
+  });
 });
 
 // show notifications page
@@ -107,15 +134,15 @@ router.post('/sendrequest', middleware.isLoggedIn, (req, res) => {
   var height = req.body.height;
   var width = req.body.width;
   var weight = req.body.weight;
-  var author = req.user.username;
+  // var author = req.user.username;
   var address = req.user.address;
   var mobile = req.user.mobile;
 
-  // var author = {
-  //   id: req.user._id,
-  //   username: req.user.username,
-  //   email: req.user.email,
-  // };
+  var author = {
+    id: req.user._id,
+    username: req.user.username,
+    email: req.user.email,
+  };
 
   var newRequest = {
     address: address,
@@ -140,6 +167,22 @@ router.post('/sendrequest', middleware.isLoggedIn, (req, res) => {
         message: 'Failed To Request',
       });
     } else {
+      const msg = {
+        to: req.user.email, // Change to your recipient
+        from: 'pp0428281@gmail.com', // Change to your verified sender
+        subject: 'Saaf India - Request Successfull',
+        text: 'Saaf India - Request Successfull',
+        html: '<table><tr><td><center><img src="https://espumil.com.br/wp-content/uploads/2021/03/simbolo-reciclagem-1.png" alt=""height="300" width="400"></center></td></tr><tr><td><center><h1>Request Successfull</h1></center></td></tr></table>',
+      };
+      sgMail
+        .send(msg)
+        .then(() => {
+          console.log('Email sent');
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+
       res.render('scanqr', {
         message: 'Request Successfull',
       });
