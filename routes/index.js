@@ -238,6 +238,22 @@ router.post('/register', upload, (req, res) => {
       });
     }
     passport.authenticate('local')(req, res, () => {
+      console.log(email);
+      const msg = {
+        to: email, // Change to your recipient
+        from: 'pp0428281@gmail.com', // Change to your verified sender
+        subject: 'Welcome To Saaf India',
+        text: 'Welcome To Saaf India',
+        html: '<table><tr><td><center><img src="https://espumil.com.br/wp-content/uploads/2021/03/simbolo-reciclagem-1.png" alt=""height="300" width="400"></center></td></tr><tr><td><center><h1>Welcome To Saaf India !!! Start Recycling Now</h1></center></td></tr></table>',
+      };
+      sgMail
+        .send(msg)
+        .then(() => {
+          console.log('Email sent');
+        })
+        .catch((error) => {
+          console.error(error);
+        });
       res.render('index', {
         currentUser: req.user,
         profileimg: req.file.filename,
